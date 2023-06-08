@@ -24,13 +24,30 @@
   - Block Scoped
   - When users declare the const variable, they need to initialize it otherwise, it returns an error.
   - Cannot be updated once its declared.
+```javascript
+    const accountId = 34217;
+    let accountEmail = "bk@gmail.com"
+    var accountPassword = "12345"
+    accountCity = "BAM"
+    let accountState;
+    // accountId = 258  // can not be reassigned.
+    accountEmail="qwe@gmail.com"
+    accountPassword="456321"
+    accountCity="BBSR"
+
+    /*
+    Prefer not to use var, because of issue in block and functional     scope.
+    */
+    console.log(accountId);
+    console.table([accountId, accountEmail, accountPassword,    accountCity, accountState])
+``` 
 
 ## DataTypes
 ### Primitive
 - #### String
   - Double Quotes : "Hello"
   - single Quotes : 'Hello'
-  - BackTicks : Hello, this is the extended functionality of quotes.which allows us to embed the variables & expressions into string by wrapping them in ${........}.
+  - BackTicks : Hello, this is the extended functionality of quotes.which allows us to embed the variables & expressions into string by wrapping them in `  ${........} `
 - #### Number
   - represents both integer and floating numbers
   - limits upto (253 - 1)
@@ -55,8 +72,10 @@
   - returns the type of the operand. Helps to do a quick check the dataType of the operand.
   - used as typeof x or typeof(x)
   - always returns the value in <b>string</b> DataType.
-  - typeof(123)  // "number"
-  - typeof(typeof 123)  // "string"
+```javascript
+    typeof(123)  // "number"
+    typeof(typeof 123)  // "string"
+```
 
 ## TypeConversion
   - ### convert to Number
@@ -83,32 +102,26 @@
 - #### String(value to Convert)
   - Operations
     - +, -, *, /, %, **, etc..
+```javascript
+    console.log(' 1 ' + 2) // 12
+    console.log( 1 + ' 2 ') // 12
+    console.log( ' 1 ' + 2 + 2) // 122 => as 1st element is string, it converts everything to string.
+    console.log( 1 + 2 + ' 2 ') // 32 
+```
   - PreIncrement
     - where the value is increased and immediately use the result of the operator
-    - <code> let counter = 0;alert( ++counter ); // 1 </code>
-    - <code> let counter = 1; alert( 2 * ++counter ); // 4 </code>
-
-   - PostIncrement
+```javascript
+    let counter = 0;  alert( ++counter ); // 1 
+    let counter = 1;  alert( 2 * ++counter ); // 4 
+```
+  - PostIncrement
       - where the value gets increased, but its previous value.
-      - <code> let counter = 0;alert( counter++ ); // 0 </code>
-      - <code> let counter = 1; alert( 2 * counter++ ); // 2, because counter++ returns the "old" value</code>
-  
-### Comparision
-- #### , <, =, <=, >=, !=, ==, ===
+```javascript
+    let counter = 0;  alert( counter++ ); // 0 
+    let counter = 1;  alert( 2 * counter++ ); // 2, because counter++ returns the "old" value
+```
+- ### Comparision
+   , <, =, <=, >=, !=, ==, ===
   - Boolean value is the result, i.e. it may be true or false.
-### String
-    - ways to create String
-      - By using string interpolation
-      - const hello = 'Hello'
-      - by using new keyword
-      - <code> const sport = new String('Badminton') </code>
-  - #### String Methods
-    - Nums & Math
-    - Created by using 2 ways
-      - by using
-        - const gamePoint = 200
-      - By using new keyword
-        - const score = new Number(gamePoint)
-### Date & Time
-  - ####  
+
 
