@@ -75,6 +75,24 @@
 ```javascript
     typeof(123)  // "number"
     typeof(typeof 123)  // "string"
+    typeof(null) //object
+
+    const id = Symbol( '123' )
+    console.log(typeof (id))
+    // *****************************************
+    const arr = [ 1, 2, 3, 4, 5]
+    console.log( typeof arr)
+    // *****************************************
+    const obj = {
+      name : ' Bhawani_K ',
+      age : 22
+    }
+    console.log(typeof (obj))
+    // *****************************************
+    const myFunction = function(){
+      console.log( ' Hello World ' )
+    }
+    console.log( typeof myFunction)
 ```
 
 ## TypeConversion
