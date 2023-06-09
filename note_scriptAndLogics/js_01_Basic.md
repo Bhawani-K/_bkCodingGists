@@ -2,12 +2,10 @@
 - [DataTypes](#datatypes)
   - [Primitive](#primitive)
   - [Non-Primitive](#non-primitive)
+  - [Memory](#memory)
 - [TypeConversion](#typeconversion)
   - [convert to Boolean](#convert-to-boolean)
   - [convert to String](#convert-to-string)
-  - [Comparision](#comparision)
-  - [String](#string)
-  - [Date \& Time](#date--time)
 
 
 
@@ -93,6 +91,36 @@
       console.log( ' Hello World ' )
     }
     console.log( typeof myFunction)
+```
+
+### Memory
+  - #### stack
+    - Primitive
+    - where we get the copy of the declared variable
+  - #### Heap
+    - Non-Primitive
+    - where we get the refrence of the variable ,
+    - If we change something, it changes in the original value
+      ![MemoryExplanation](../assets/memory.png)
+```javascript
+    let myName = ' Bhawani_K'
+    let myNickName = myName
+    myNickName = 'Soni'
+    
+    console.log(myName)  // 
+    console.log(myNickName)  // 
+    
+    let userOne = {
+      email : 'user.google.com',
+      upi : 'user@ybl.com'
+    }
+
+    let userTwo = userOne
+
+    userTwo.email = 'abc@gmail.com'
+
+    console.log(userOne.email)  // abc.gmail.com
+    console.log(userTwo.email)  //abc.gmail.com
 ```
 
 ## TypeConversion
