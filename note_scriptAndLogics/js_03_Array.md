@@ -11,6 +11,9 @@
     - [join](#join)
     - [slice](#slice)
     - [splice](#splice)
+    - [Spread Operator](#spread-operator)
+    - [flat](#flat)
+    - [Rest Operator](#rest-operator)
 
 
 ### Array
@@ -109,5 +112,24 @@ const beta = [1,2,3,4,5]
 console.log(beta.splice(1,3));
 ```
 
+<!-- **************************************************************** -->
+
+##### Spread Operator
+  - Allows us to copy all the elements into another array or object.
+  - this makes code concise and enhances its readability.
+```javascript
+const abc = ['a', 'b', 'c', 'd', 'e' ]
+const zxc = [1,2,3,4,5,6]
+const p3str = [...abc, ...zxc]
+console.log(p3str);  //spreads all the elements 
+```
+##### flat
+  - flatens the array
+```javascript
+const arr4 = [1,2,[3,4],[5,[6,7,8]],3,5,9]
+console.log(arr4.flat(Infinity)); // spreads / flatens the array.
+```
+##### Rest Operator
+  - 
 
 
