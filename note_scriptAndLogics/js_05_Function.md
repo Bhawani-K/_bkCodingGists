@@ -1,13 +1,13 @@
 - [Function](#function)
-    - [parameters](#parameters)
-    - [Arguments](#arguments)
-- [Function Return](#function-return)
-- [Function Expression](#function-expression)
-- [Arrow Functions](#arrow-functions)
-- [Nested Functions](#nested-functions)
+      - [parameters](#parameters)
+      - [Arguments](#arguments)
+  - [Function Return](#function-return)
+  - [Function Expression](#function-expression)
+  - [Arrow Functions](#arrow-functions)
+  - [Nested Functions](#nested-functions)
 
 
-### Function
+## Function
 - function is a block of code which performs a specific task.
     - Advantages
       - Code Reusablity, We can call a function multiple times so it saves coding.
@@ -86,11 +86,71 @@ function greet(firstName){
 greet("Steve");
 ```
 
-Scope
+## Scope
+- defines the accessiblity of variables, objects anf functions.
+- There are 2 types of scope
+  - Global Scope
+  - Local Scope
+
+##### Global Scope
+- Variables declared outside of any function
+- Global variables can be accessed and modified from any function.
+```javascript
+var userName = "Bill";
+    function modifyUserName() {
+        userName = "Steve";
+    };
+    function showUserName() {
+        console.log(userName);
+    };
+    console.log(userName); // display Bill
+    modifyUserName();
+    showUserName();// display Steve
+```
+
+
+##### Local Scope
+- Variables declared inside any function with var / let keyword.
+- Local variables cannot be accessed or modified outside the function declaration.
+```javascript
+    function createUserName() {
+        var userName = "Bill";
+    }
+    function showUserName() {
+        console.log(userName);
+    }
+    createUserName();
+    showUserName(); // throws error: userName is not defined
+```
+
 
 closure
 
-this
+## this
+- 4 rules for ' this ' to know which object is being refered.
+  - Global Scope
+  - Inside Object's Method
+  - call() or apply()
+  - bind()
+
+##### Global
+- if a function includes this keyword, which is called from the global scope then, <code>this</code> points to the <b>window Object</b>
+```javascript
+var myVar = 100;
+function WhoIsThis() {
+    var myVar = 200;
+    console.log("myVar = " + myVar); // 200
+    console.log("this.myVar = " + this.myVar); // 100
+}
+WhoIsThis(); // inferred as window.WhoIsThis()
+```
+Note** In strict mode, the value of this refers to undefined in global scope.
+- ' this ' points to global window object even if it is used in an inner function.
+
+Inside Object's Method
+- 
+
+
 
 hoisting
 
