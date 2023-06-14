@@ -1,10 +1,10 @@
 - [Function](#function)
-      - [parameters](#parameters)
-      - [Arguments](#arguments)
-  - [Function Return](#function-return)
-  - [Function Expression](#function-expression)
-  - [Arrow Functions](#arrow-functions)
-  - [Nested Functions](#nested-functions)
+    - [parameters](#parameters)
+    - [Arguments](#arguments)
+- [Function Return](#function-return)
+- [Function Expression](#function-expression)
+- [Arrow Functions](#arrow-functions)
+- [Nested Functions](#nested-functions)
 
 
 ## Function
@@ -36,7 +36,7 @@ add(2,9);
 ```
 ### Function Return
 -  return denotes the function execution has ended.
-- If we are returning the value from a function, then to print the returne value we need to call the function in a variable and the print it.
+- If we are returning the value from a function, then to print the returned value we need to call the function in a variable and the print it.
 ```javascript
 function add(num1, num2){
     // code
@@ -53,7 +53,7 @@ var add = function (num1, num2) {
 };
 var result = add(10, 20);//returns 30
 ```
-Anonymous Function
+### Anonymous Function
 - functions without a name.
 - Anonymous functions are often used as arguments to other functions.
 - typically used in functional programming, e.g. callback function, creating closure or iife.
@@ -63,7 +63,6 @@ let squareNumbers = numbers.map(function(number) {
   return number * number;
 });
 ```
-
 ### Arrow Functions
 - shorthand syntax for defining anonymous function in javascript.
 ```javascript
@@ -71,7 +70,6 @@ let square = num =>{num* num}
 let result = square(5)
 console.log(result) // 25
 ```
-
 ### Nested Functions
 - where a function can have one or more inner functions.
 - These functions are in the scope of outer function.
@@ -147,8 +145,54 @@ WhoIsThis(); // inferred as window.WhoIsThis()
 Note** In strict mode, the value of this refers to undefined in global scope.
 - ' this ' points to global window object even if it is used in an inner function.
 
-Inside Object's Method
+##### Inside Object's Method
 - 
+##### call()
+- call is a function which helps us to change the context of the invoking function.
+- OR,  It helps to replace the value of <code> this </code> inside a function with whatever value we want.
+- requires the parameters to be listed explicitly
+```javascript
+// func.call(valueForThis, arg1, arg2, ...)
+var x = 10;
+var o = { x: 15 };
+function f()
+{
+    console.log(this.x);
+}
+f();
+f.call(o);
+```
+- Here, we've told the runtime what object to reference as "this" while executing inside of function f().
+##### apply()
+- let us to invoke the function with arguments as an array.
+- Here, arguments are passed as an array literal or as a new array object.
+- 
+```javascript
+// func.apply(valueForThis, arrayOfArgs)
+// func.apply(thisObj, [args1, args2, ...]);
+// func.apply(thisObj, new Array(args1, args2));
+var x = 10;
+var o = { x: 15 };
+function f(message)
+{
+    alert(message);
+    alert(this.x);
+}
+f("invoking f");
+f.apply(o, ["invoking f through apply"]);
+```
+
+- Example
+```javascript
+function theFunction(name, profession) {
+    console.log("My name is " + name + " and I am a " + profession +".");
+}
+theFunction("John", "fireman");
+theFunction.apply(undefined, ["Susan", "school teacher"]);
+theFunction.call(undefined, "Claude", "mathematician");
+```
+##### bind()
+
 
 
 
