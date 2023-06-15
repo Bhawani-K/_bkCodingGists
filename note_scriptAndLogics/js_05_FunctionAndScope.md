@@ -1,10 +1,14 @@
 - [Function](#function)
-    - [parameters](#parameters)
-    - [Arguments](#arguments)
+      - [parameters](#parameters)
+      - [Arguments](#arguments)
 - [Function Return](#function-return)
 - [Function Expression](#function-expression)
+- [Anonymous Function](#anonymous-function)
 - [Arrow Functions](#arrow-functions)
 - [Nested Functions](#nested-functions)
+- [Scope](#scope)
+      - [Global Scope](#global-scope)
+      - [Local Scope](#local-scope)
 
 
 ## Function
@@ -120,84 +124,3 @@ var userName = "Bill";
     createUserName();
     showUserName(); // throws error: userName is not defined
 ```
-
-
-closure
-
-## this
-- 4 rules for ' this ' to know which object is being refered.
-  - Global Scope
-  - Inside Object's Method
-  - call() or apply()
-  - bind()
-
-##### Global
-- if a function includes this keyword, which is called from the global scope then, <code>this</code> points to the <b>window Object</b>
-```javascript
-var myVar = 100;
-function WhoIsThis() {
-    var myVar = 200;
-    console.log("myVar = " + myVar); // 200
-    console.log("this.myVar = " + this.myVar); // 100
-}
-WhoIsThis(); // inferred as window.WhoIsThis()
-```
-Note** In strict mode, the value of this refers to undefined in global scope.
-- ' this ' points to global window object even if it is used in an inner function.
-
-##### Inside Object's Method
-- 
-##### call()
-- call is a function which helps us to change the context of the invoking function.
-- OR,  It helps to replace the value of <code> this </code> inside a function with whatever value we want.
-- requires the parameters to be listed explicitly
-```javascript
-// func.call(valueForThis, arg1, arg2, ...)
-var x = 10;
-var o = { x: 15 };
-function f()
-{
-    console.log(this.x);
-}
-f();
-f.call(o);
-```
-- Here, we've told the runtime what object to reference as "this" while executing inside of function f().
-##### apply()
-- let us to invoke the function with arguments as an array.
-- Here, arguments are passed as an array literal or as a new array object.
-- 
-```javascript
-// func.apply(valueForThis, arrayOfArgs)
-// func.apply(thisObj, [args1, args2, ...]);
-// func.apply(thisObj, new Array(args1, args2));
-var x = 10;
-var o = { x: 15 };
-function f(message)
-{
-    alert(message);
-    alert(this.x);
-}
-f("invoking f");
-f.apply(o, ["invoking f through apply"]);
-```
-
-- Example
-```javascript
-function theFunction(name, profession) {
-    console.log("My name is " + name + " and I am a " + profession +".");
-}
-theFunction("John", "fireman");
-theFunction.apply(undefined, ["Susan", "school teacher"]);
-theFunction.call(undefined, "Claude", "mathematician");
-```
-##### bind()
-
-
-
-
-hoisting
-
-IIFE
-
-
