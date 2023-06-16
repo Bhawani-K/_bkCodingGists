@@ -124,3 +124,88 @@ var userName = "Bill";
     createUserName();
     showUserName(); // throws error: userName is not defined
 ```
+<!-- ************ HOISTING ********** -->
+## Hoisting
+- Hoisting is JavaScript’s default behavior of moving declarations to the top of the current scope (to the top of the current script or the current function)
+- This means that a variable can be used before it has been declared.
+- For example, a variable declared with var can be used before its declaration and it will not result in an error, instead, it will return undefined
+
+##### How to avoid hoisting issues in javascript
+- Declare variables and functions with let and const wherever you can.
+- Always declare variables at the beginning of each and every scope because this is how JavaScript and developers read code
+- Never use var
+
+<!-- ************ CLOSURE *********** -->
+## Closure
+- Closure means the inner function always has access to the variables and parameters of its outer function.
+- In nested functions, the inner functions can access the variables and parameters of an outer function. However, it cannot access the arguments object of outer function.
+
+```javascript
+function OuterFunction() {
+    var outerVariable = 1;
+    function InnerFunction() {
+        console.log(outerVariable);
+    }
+    InnerFunction(); // innerFunction() can access outerVariable
+}
+```
+As per defn, InnerFunction() can access outerVariable even if it is executed separately i.e...
+```javascript
+function OuterFunction() {
+    var outerVariable = 100;
+    function InnerFunction() {
+        alert(outerVariable);
+    }
+    return InnerFunction; // returns the InnerFunction from OuterFunction when we call outerFunction() which is called outside from the scope of the function
+}
+var innerFunc = OuterFunction();
+innerFunc(); // 100
+```
+- Here, the variable innerFunc reference the InnerFunction() only, not the outterFunction(). Such that when we call innerFun(), it still access outerVariable which is declared in OuterFunction(). Which is being refered as Closure.
+- Closure is where the outer varibles keep their states b/w multiple calls. Here, the inner Functions does not keep the seperate copy of outer variables rather it keeps the reference of the outer variables. which means the value of the outer variables will be changed if we change it using inner function.
+
+##### Closure in multiple levels of inner functions
+```javascript
+function Counter() {
+    var counter = 0;
+    setTimeout(function(){
+        var innerCounter = 0;
+        counter += 1;
+        console.log(' counter = '+ counter);
+        setTimeout(function(){
+            counter += 1;
+            innerCounter += 1;
+            console.log(`  counter = ${counter}, innerCounter ${innerCounter}`)
+        },500)
+    },1000)
+}
+Counter();
+```
+##### When to use closure
+- Closure is used to hide the implementation. It is used to create private variables or functions.
+```javascript
+var counter = (function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  };   
+})();
+console.log(counter.value()); // 0
+counter.increment();
+counter.increment();
+console.log(counter.value()); // 2
+counter.decrement();
+console.log(counter.value()); // 1
+```
+- Here, increment(), decrement() and value() becomes public function as they are being included in the return object. Whereas changeBy() function becomes private function as its not returned and only used internally by increment() and decrement().

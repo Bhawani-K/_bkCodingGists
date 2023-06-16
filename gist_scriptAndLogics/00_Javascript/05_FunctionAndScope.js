@@ -59,7 +59,42 @@ function one() {
         const website = 'youtube'
         console.log(username);
     }
-    console.log(website);
+    // console.log(website);
     two()
 }
 one()
+
+// ***********************************************************************************************
+// CLOSURE
+function OuterFunction() {
+    var outerVariable = 100;
+    function InnerFunction() {
+        console.log(outerVariable);
+    }
+    return InnerFunction; // returns the InnerFunction from OuterFunction when we call outerFunction() which is called outside from the scope of the function
+}
+var innerFunc = OuterFunction();
+innerFunc(); // 100
+// ===============
+
+function Counter() {
+    var counter = 0;
+    setTimeout(function(){
+        var innerCounter = 0;
+        counter += 1;
+        console.log(' counter = '+ counter);
+        setTimeout(function(){
+            counter += 1;
+            innerCounter += 1;
+            console.log(`  counter = ${counter}, innerCounter ${innerCounter}`)
+        },500)
+    },1000)
+}
+Counter();
+
+// ==================
+// EXAMPLE OF NOT A CLOSURE
+var Counter = (function () {
+    var i = 0;
+    return { counter : i += 1 };
+})();
