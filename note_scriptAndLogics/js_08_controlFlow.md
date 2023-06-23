@@ -1,3 +1,29 @@
+- [Control Flow Statements](#control-flow-statements)
+  - [conditional statement](#conditional-statement)
+      - [if statement](#if-statement)
+      - [if-else statement](#if-else-statement)
+      - [if-else...if-else](#if-elseif-else)
+      - [nested if](#nested-if)
+      - [Falsy](#falsy)
+      - [Truthy](#truthy)
+      - [Nullish Coalescing Operator (??)](#nullish-coalescing-operator-)
+  - [Loops](#loops)
+      - [For loop](#for-loop)
+      - [For-in loop](#for-in-loop)
+      - [while loop](#while-loop)
+      - [do-while loop](#do-while-loop)
+      - [Break](#break)
+      - [Continue](#continue)
+  - [Array specific Loops](#array-specific-loops)
+      - [for loop](#for-loop-1)
+      - [for-in](#for-in)
+      - [for-of](#for-of)
+      - [for-of with entries()](#for-of-with-entries)
+      - [forEach()](#foreach)
+      - [map()](#map)
+      - [filter()](#filter)
+      - [reduce()](#reduce)
+
 
 ## Control Flow Statements
 - Control flow statements are used to control the flow of execution in a program.
@@ -133,3 +159,107 @@ for (let i = 0; i < 10; i++) {
   console.log(i);
 }
 ```
+
+### Array specific Loops
+##### for loop
+- for loop iterates over a specified range of numbers and runs a block of code on each iteration.
+```javascript
+let arr = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+```
+##### for-in
+- for-in loop through the properties of an object.
+```javascript
+let names = ["John", "Jack", "Alice"];
+for (let i in names) {
+  console.log(names[i]);
+}
+```
+##### for-of
+- for-of accesses the values inside an array, not the keys.
+```javascript
+let names = ["John", "Jack", "Alice"];
+for (let i of names) {
+  console.log(i);
+}
+// ================
+for (const [key, value] of map) {
+    console.log(key);
+    console.log(value); // gets key and value separately
+}
+```
+##### for-of with entries()
+- Every array has a method entries() which returns an iterable of both key and values of an array.
+```javascript
+const names = ["John", "Jack", "Alice"];
+for (const [key, value] of names.entries()) {
+  console.log(`key: ${key}, value: ${value}`);
+}
+```
+##### forEach()
+- forEach() runs a function on each indexed element in an array.
+<b style= "color:red">NOTE*</b> forEach(), takes function as an input argument. Works same as for loop. However, here the function takes the input parameter and it does not ```returns``` any value. 
+
+##### map()
+- map() creates new array with the results of calling a function, for each element of an array
+- map() gets the unique elements from an array and returns the new array based on callback function result.
+```javascript
+const map = new Map()
+map.set("IN", "India")
+map.set("JPN", "Japan")
+map.set("IN", "India")
+map.set("Fr", "France")
+
+console.log(map);
+for (const key of map) {
+    console.log(key);  // gets the array of key, values
+}
+```
+##### filter()
+- takes the callback function and calls the function for every item of an array and returns the elements which satisfies the condition.
+```javascript
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const filter = array.filter((num) => {
+    num > 4;   //  it does returns any values, becoz here we have opened the scope {}. So, as we have opened the scope we need to provide the return keyword to fetch the result.
+    return num > 4;  // filters and returns which satisfies the condition to be true.
+})
+console.log(filter);
+```
+##### reduce()
+- it does not change the original array.
+- it takes in 
+  - callback 
+    - function which gets executed on each array element
+    - Excepts first element if no initialValue is provided.
+  - accumulator 
+    - it accumulates the callback's return values.
+  - currentvalue 
+    - current element being passed from the array.
+  - initial value.
+    - value passed to callback() on first call.
+    - If not provided, the 1st element acts as the accumulator on first call and callback() wont get executed on it.
+
+- returns single value resulting after reducing the array.
+- syntax : 
+  - arr.reduce(callback(accumulator, currentValue), initialValue)
+
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6];
+
+function sum_reducer(accumulator, currentValue) {
+  return accumulator + currentValue;
+}
+let sum = numbers.reduce(sum_reducer);
+console.log(sum); // 21
+
+// using arrow function
+let summation = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue
+);
+console.log(summation); // 21
+```
+
+
